@@ -81,6 +81,10 @@ ul li a:hover {
   min-height: 100vh;
 }
 
+.input-box {
+  margin: 2rem;
+}
+
 .input-box input {
   padding: 1rem;
   width: 200px;

@@ -74,5 +74,21 @@ ul li a {
 }
 
 ul li a:hover {
-  color: var(--text-hover);
+  color: gold;
+}
+
+#search {
+  min-height: 100vh;
+}
+
+.input-box input {
+  padding: 1rem;
+  width: 200px;
+}
+
+.input-box button {
+  background-color: gold;
+  padding: 10px;
+  border-radius: 50px;
+  color: black;
 }

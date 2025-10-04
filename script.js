@@ -14,8 +14,15 @@ let search = async (input) => {
   );
   let data = await res.json();
   console.log(data);
+  if (data.meals == null) {
+    let h1 = document.createElement("h1");
+    h1.innerText = "No meal found";
+    databox.appendChild(h1);
+  }
   console.log(data.meals[0]);
-  console.log(data.meals[0].strArea);
+
+  // ingr container
+  let ingBox = document.getElementById("ing-container");
   let ul = document.createElement("ul");
   for (key in data.meals[0]) {
     if (key.includes("strIngredient") && data.meals[0][key] != "") {
@@ -28,12 +35,14 @@ let search = async (input) => {
         "src",
         `https://www.themealdb.com/images/ingredients/${data.meals[0][key]}.png`
       );
+      img.style.height = "200px";
       li.appendChild(img);
       ul.appendChild(li);
     }
   }
+  ingBox.appendChild(ul);
 
-  databox.appendChild(ul);
+  let instrContainer = document.getElementById("instr-container");
   let strInstruction = data.meals[0]["strInstructions"];
   let ingArr = strInstruction.split(".");
 
@@ -41,8 +50,9 @@ let search = async (input) => {
   for (val of ingArr) {
     let li2 = document.createElement("li");
     li2.textContent = val;
+    li2.style.width = "100%";
     ul1.appendChild(li2);
   }
   console.log(ingArr);
-  databox.appendChild(ul1);
+  instrContainer.appendChild(ul1);
 };

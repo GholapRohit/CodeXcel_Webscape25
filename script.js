@@ -20,7 +20,29 @@ let search = async (input) => {
   for (key in data.meals[0]) {
     if (key.includes("strIngredient") && data.meals[0][key] != "") {
       console.log(data.meals[0][key]);
-      let li = document.createElement;
+
+      let li = document.createElement("li");
+      li.textContent = data.meals[0][key];
+      let img = document.createElement("img");
+      img.setAttribute(
+        "src",
+        `https://www.themealdb.com/images/ingredients/${data.meals[0][key]}.png`
+      );
+      li.appendChild(img);
+      ul.appendChild(li);
     }
   }
+
+  databox.appendChild(ul);
+  let strInstruction = data.meals[0]["strInstructions"];
+  let ingArr = strInstruction.split(".");
+
+  let ul1 = document.createElement("ul");
+  for (val of ingArr) {
+    let li2 = document.createElement("li");
+    li2.textContent = val;
+    ul1.appendChild(li2);
+  }
+  console.log(ingArr);
+  databox.appendChild(ul1);
 };
